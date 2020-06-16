@@ -1,0 +1,22 @@
+﻿<Window x:Class="WeatherAppWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeatherAppWPF"
+        mc:Ignorable="d"
+        Title="WeatherApp" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="14*"/>
+            <ColumnDefinition Width="383*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="dgCitiesList" FontSize="16" FontWeight="Bold" Margin="10,10,9.6,10" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path= CityTitle}" IsReadOnly="False" Header="CityTitle" Width="180" />
+                <DataGridTextColumn Binding="{Binding Path= WeatherInfo}" IsReadOnly="False" Header="Weather" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
