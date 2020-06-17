@@ -11,7 +11,7 @@
             <ColumnDefinition Width="14*"/>
             <ColumnDefinition Width="383*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dgCitiesList" FontSize="16" FontWeight="Bold" Margin="10,10,9.6,10" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+        <DataGrid x:Name="dgCitiesList" FontSize="16" FontWeight="Bold" Margin="10" AutoGenerateColumns="False" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path= CityTitle}" IsReadOnly="False" Header="CityTitle" Width="180" />
                 <DataGridTextColumn Binding="{Binding Path= WeatherInfo}" IsReadOnly="False" Header="Weather" Width="*"/>

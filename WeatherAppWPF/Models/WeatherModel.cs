@@ -1,16 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Net;
 
 namespace WeatherAppWPF.Models
 {
     class WeatherModel : INotifyPropertyChanged
     {
+        private const string API_KEY = "apikey=xrCyGodJi1Gv8eG0RqCSeppbAsf8bgRW";
+        private const string LOCATION_REQUEST = "http://dataservice.accuweather.com/locations/v1/cities/search?" + API_KEY + "&q=";
+        private const string CONDITIONS_REQUEST = "http://dataservice.accuweather.com/currentconditions/v1/";
+
         private string _cityTitle;
-        private string _weatherInfo;
+        public string WeatherInfo { get; set; }
 
         public string CityTitle
         {
@@ -20,26 +22,40 @@ namespace WeatherAppWPF.Models
                 if (_cityTitle == value)
                     return;
                 _cityTitle = value;
+
+                SetWeatherInfo(GetCityId(GetResponseJson(LOCATION_REQUEST + value.ToLower())));
                 OnPropertyChanged("CityTitle");
-            }
-        }
-        public string WeatherInfo
-        {
-            get { return _weatherInfo; }
-            set
-            {
-                if (_weatherInfo == value)
-                    return;
-                _weatherInfo = value;
                 OnPropertyChanged("WeatherInfo");
             }
         }
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public string GetResponseJson(string request)
+        {
+            WebRequest locationRequest = WebRequest.Create($"{request}");
+            WebResponse locationResponse = locationRequest.GetResponse();
+            using (StreamReader stream = new StreamReader(locationResponse.GetResponseStream()))
+            {
+                return stream.ReadToEnd();
+            }
+        }
+
+        public string GetCityId(string response)
+        {
+            dynamic deserialized = JsonConvert.DeserializeObject(response);
+            return deserialized.First.Key;
+        }
+
+        public void SetWeatherInfo(string cityId)
+        {
+            string conditions_request = $"{CONDITIONS_REQUEST}{cityId}?{API_KEY}";
+            dynamic deserialized = JsonConvert.DeserializeObject(GetResponseJson(conditions_request));
+            WeatherInfo = deserialized.First.WeatherText;
         }
     }
 }

@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WeatherAppWPF.Models;
 using WeatherAppWPF.Services;
 
@@ -26,7 +14,6 @@ namespace WeatherAppWPF
         private readonly string PATH = $"{Environment.CurrentDirectory}\\WeatherApp.json";
         private BindingList<WeatherModel> _weatherDataList;
         private FileIOService _fileIOService;
-
 
         public MainWindow()
         {
@@ -45,8 +32,7 @@ namespace WeatherAppWPF
                 MessageBox.Show(ex.Message);
                 Close();
             }
-
-
+            
             dgCitiesList.ItemsSource = _weatherDataList;
             _weatherDataList.ListChanged += _weatherDataList_ListChanged;
         }
