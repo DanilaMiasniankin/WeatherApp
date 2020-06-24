@@ -46,9 +46,6 @@
     <Reference Include="FlaUI.UIA3, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\WeatherAppWPF\packages\FlaUI.UIA3.3.1.0\lib\net45\FlaUI.UIA3.dll</HintPath>
     </Reference>
-    <Reference Include="FluentAssertions, Version=5.10.3.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <HintPath>..\WeatherAppWPF\packages\FluentAssertions.5.10.3\lib\net47\FluentAssertions.dll</HintPath>
-    </Reference>
     <Reference Include="Interop.UIAutomationClient, Version=10.0.18362.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\WeatherAppWPF\packages\Interop.UIAutomationClient.10.18362.0\lib\net45\Interop.UIAutomationClient.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
