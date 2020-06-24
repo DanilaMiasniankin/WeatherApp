@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherAppWPF"
         mc:Ignorable="d"
-        Title="WeatherApp" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="WeatherApp" Height="450" Width="500" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="14*"/>
             <ColumnDefinition Width="383*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="dgCitiesList" FontSize="16" FontWeight="Bold" Margin="10" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+        <DataGrid x:Name="dgCitiesList" AutomationProperties.AutomationId="WeatherGrid" FontSize="16" FontWeight="Bold" Margin="10" AutoGenerateColumns="False" Grid.ColumnSpan="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path= CityTitle}" IsReadOnly="False" Header="CityTitle" Width="180" />
-                <DataGridTextColumn Binding="{Binding Path= WeatherInfo}" IsReadOnly="False" Header="Weather" Width="*"/>
+                <DataGridTextColumn AutomationProperties.AutomationId="CityTitleColumn" Binding="{Binding Path= CityTitle}" IsReadOnly="False" Header="CityTitle" Width="180" />
+                <DataGridTextColumn AutomationProperties.AutomationId="WeatherInfoColumn" Binding="{Binding Path= WeatherInfo}" IsReadOnly="True" Header="Weather" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
 

@@ -7,7 +7,7 @@ namespace WeatherAppWPF.Models
 {
     class WeatherModel : INotifyPropertyChanged
     {
-        private const string API_KEY = "apikey=xrCyGodJi1Gv8eG0RqCSeppbAsf8bgRW";
+        private const string API_KEY = "apikey=1CqKZzD24kU5gD8NWQFCvz5wzGcWnvto";
         private const string LOCATION_REQUEST = "http://dataservice.accuweather.com/locations/v1/cities/search?" + API_KEY + "&q=";
         private const string CONDITIONS_REQUEST = "http://dataservice.accuweather.com/currentconditions/v1/";
 
